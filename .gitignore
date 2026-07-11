@@ -7,3 +7,6 @@ output.json
 state.json
 temp_lambda/
 .pytest_cache/
+*.class
+*.java
+*.pyc
