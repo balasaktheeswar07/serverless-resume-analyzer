@@ -1,33 +1,61 @@
-# Serverless Resume Analyzer
+# Resume Analyzer
 
-Local demo flow:
+A simple serverless application that analyzes your resume against job descriptions.
 
-1. FastAPI receives a resume upload.
-2. FastAPI stores the file in LocalStack S3.
-3. FastAPI invokes a LocalStack Lambda.
-4. Lambda reads the resume from S3 and returns a simple keyword match analysis.
+## What It Does
 
-## Run
+- Upload your resume (as a text file)
+- Provide a job description you're interested in
+- Get a match score showing how well your resume fits the job
+- See which keywords from the job description are in your resume
+- Find out which keywords you might be missing
 
-```powershell
+## How to Use
+
+### 1. Start the Application
+Run Docker to start the backend:
+```
 docker compose up --build
 ```
 
-Open:
+### 2. Upload Your Resume
+Open your browser at: **http://localhost:8000/docs**
 
-- API root: <http://localhost:8000>
-- API docs: <http://localhost:8000/docs>
+Click on "POST /upload-resume" and:
+- Upload your resume file
+- Paste the job description in the text field
+- Click Execute
 
-## Test Upload
+### 3. See Your Results
+The application returns:
+- **Score**: How well your resume matches the job (0-100%)
+- **Matched Keywords**: Keywords from the job that are in your resume
+- **Missing Keywords**: Keywords you don't have but should mention
+- **Top Terms**: The most common words in your resume
+- **Suggestions**: Tips to improve your resume
 
-Use the Swagger UI at `/docs`, or run:
+## What You Need
 
-```powershell
-curl.exe -X POST "http://localhost:8000/upload-resume" `
-  -F "file=@sample.txt" `
-  -F "job_description=python fastapi docker aws lambda s3"
-```
+- Docker (for running the application locally)
+- A resume file (txt, md, or csv format)
+- A job description to compare against
 
-The first version supports text-like resumes best. PDF and DOCX parsing can be added next with `pypdf` and `python-docx`.
+## How It Works Behind the Scenes
 
-I built this projet to demonstrate my knowlege in cloud and experiment
+1. **FastAPI Backend**: Receives your resume and job description
+2. **AWS Lambda**: Processes the resume and extracts keywords
+3. **S3 Storage**: Stores your uploaded resume
+4. **LocalStack**: Simulates AWS services locally
+
+## Example
+
+**Resume contains**: python, docker, fastapi, git
+**Job description**: python, docker, aws, kubernetes
+
+**Result**: 75% match with 3 matched keywords and 2 missing keywords
+
+## Next Steps
+
+- Add PDF and Word document support
+- Create a web interface (not just the API)
+- Make the analysis more advanced
