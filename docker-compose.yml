@@ -1,0 +1,29 @@
+services:
+  localstack:
+    image: localstack/localstack:3.8.1
+    ports:
+      - "4566:4566"
+    environment:
+      - SERVICES=s3,lambda,iam,logs,apigateway
+      - AWS_DEFAULT_REGION=us-east-1
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ./localstack/init:/etc/localstack/init/ready.d
+      - ./lambda:/opt/code/lambda
+      - ./trust-policy.json:/opt/code/trust-policy.json
+      - ./lambda-policy.json:/opt/code/lambda-policy.json
+
+  backend:
+    build:
+      context: ./backend
+    ports:
+      - "8000:8000"
+    environment:
+      - AWS_ACCESS_KEY_ID=test
+      - AWS_SECRET_ACCESS_KEY=test
+      - AWS_DEFAULT_REGION=us-east-1
+      - LOCALSTACK_ENDPOINT=http://localstack:4566
+      - S3_BUCKET=resume-uploads
+      - LAMBDA_FUNCTION_NAME=resume-analyzer
+    depends_on:
+      - localstack

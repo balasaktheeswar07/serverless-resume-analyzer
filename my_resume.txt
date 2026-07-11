@@ -1,0 +1,47 @@
+ALEX JOHNSON
+
+Name: Alex Johnson
+Email: alex.johnson@example.com
+Phone: +91-9876543210
+Location: Chennai, India
+
+EDUCATION
+
+Bachelor of Engineering in Computer Science
+XYZ University, Chennai
+Graduated: 2025
+
+EXPERIENCE
+
+Software Developer Intern
+ABC Tech Solutions, Chennai
+Jan 2025 - Jun 2025
+
+- Built and tested web applications using HTML, CSS, and JavaScript
+- Collaborated with team to debug and optimize code
+
+Open Source Contributor
+GitHub Projects
+2024 - Present
+
+- Contributed to multiple repositories improving documentation and adding features
+
+SKILLS
+
+Programming: C++, Python, JavaScript
+Tools: Git, VS Code, Docker
+Databases: MySQL, MongoDB
+
+PROJECTS
+
+Resume Analyzer (Demo Project)
+- Developed a serverless app to parse and analyze resumes
+- Implemented keyword extraction and scoring logic
+
+Portfolio Website
+- Designed a personal portfolio using React and Bootstrap
+
+ACHIEVEMENTS
+
+- Winner, College Hackathon 2024
+- Completed Google Cloud Fundamentals Certification

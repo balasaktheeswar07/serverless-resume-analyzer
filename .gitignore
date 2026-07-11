@@ -1,0 +1,9 @@
+__pycache__/
+*.py[cod]
+.env
+.venv/
+lambda.zip
+output.json
+state.json
+temp_lambda/
+.pytest_cache/
